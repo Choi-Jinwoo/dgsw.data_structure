@@ -82,6 +82,8 @@ void getPostFix(char * infix, char * postfix) {
 			i++;
 			continue;
 		}
+
+
 		if (top == -1 || getRank(stack[top]) < getRank(infix[i])) { // 처음이거나 우선순위가 높을경우 푸시
 			push(infix[i]);
 			i++;
@@ -118,6 +120,7 @@ double calculate(double op1, double op2, char operator) {
 		return op1 / op2;
 }
 
+
 double getResult(char * postfix) {
 	int i = 0;
 	while (postfix[i] != NULL) {
@@ -139,11 +142,11 @@ double getResult(char * postfix) {
 
 void main() {
 	char postfix[100];
-	char infix[] = "1+2/4+(4*(3-2))";
-
+	char infix[100];
+	scanf_s("%s", infix, sizeof(infix));
 	getPostFix(infix, postfix);
 	printf("%s\n", postfix);
 
 	printf("답\n");
-	printf("%lf", getResult(postfix));
+	printf("%.3lf", getResult(postfix));
 }
